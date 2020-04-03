@@ -1,0 +1,9 @@
+.movieList {
+  border: 1px solid red;
+  width: calc(100% - 20rem);
+  height: 100vh;
+  top: 10rem;
+  margin-left: 10rem;
+  margin-top: 100px;
+  overflow: scroll;
+}
