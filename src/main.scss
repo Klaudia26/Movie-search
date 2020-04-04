@@ -6,6 +6,11 @@
   box-sizing: inherit;
 }
 
+#root {
+  overflow: hidden;
+  height: 100vh;
+}
+
 html {
   font-size: 62.5%;
 }

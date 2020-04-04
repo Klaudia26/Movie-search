@@ -1,9 +1,31 @@
 .movieList {
   border: 1px solid red;
-  width: calc(100% - 20rem);
-  height: 100vh;
+  width: calc(100% - 40rem);
+  height: calc(100% - 10rem);
   top: 10rem;
-  margin-left: 10rem;
-  margin-top: 100px;
-  overflow: scroll;
+  margin-left: 20rem;
+  margin-top: 10rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-size: 16px;
+  padding: 1rem;
+
+  &__wrapper {
+    width: 1000px;
+    margin: auto;
+  }
+
+  &__heading {
+    margin: 40px 0 30px 0;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__item {
+    margin: 0 20px;
+    list-style-type: none;
+  }
 }

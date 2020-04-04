@@ -10,7 +10,14 @@ export const fetchMovies = async (keyword) => {
 };
 
 export const fetchTopMovies = async () => {
-  const url = `${baseUrl}/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&page=20`;
+  const url = `${baseUrl}/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&page=4`;
+  const response = await axios.get(url);
+
+  return response;
+};
+
+export const fetchBestMovies = async () => {
+  const url = `${baseUrl}/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&page=4`;
   const response = await axios.get(url);
 
   return response;

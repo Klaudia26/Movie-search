@@ -4,4 +4,33 @@
   border: 1px solid red;
   width: 100%;
   height: 10rem;
+  padding: 3rem 4rem;
+
+  display: flex;
+  justify-content: space-between;
+
+  .logo-wrapper {
+    &__logo {
+    }
+  }
+
+  .search-wrapper {
+    &__search {
+    }
+  }
+
+  .nav {
+    &__list {
+      display: flex;
+    }
+
+    &__item {
+      list-style-type: none;
+      padding: 0 2rem;
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
 }
