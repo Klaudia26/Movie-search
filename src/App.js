@@ -3,7 +3,12 @@ import TopBar from './TopBar/TopBar';
 import SideBarFilters from './SideBarFilters/SideBarFilters';
 import SideBarNews from './SideBarNews/SideBarNews';
 import MovieList from './MovieList/MovieList';
-import { fetchTopMovies, fetchBestMovies, fetchSearchMovies } from './fetcher';
+import {
+  fetchTopMovies,
+  fetchBestMovies,
+  fetchSearchMovies,
+  fetchUpcomingMovies,
+} from './fetcher';
 import './main.scss';
 
 class App extends Component {
@@ -11,16 +16,19 @@ class App extends Component {
     searchMovie: [],
     topMovie: [],
     bestMovie: [],
+    upcomingtMovie: [],
     keyword: '',
   };
 
   async componentDidMount() {
     const resTopMovie = await fetchTopMovies();
     const resBestMovie = await fetchBestMovies();
+    const resupcomingtMovie = await fetchUpcomingMovies();
 
     this.setState({
       topMovie: resTopMovie.data.results,
       bestMovie: resBestMovie.data.results,
+      upcomingtMovie: resupcomingtMovie.data.results,
     });
   }
 
@@ -29,6 +37,7 @@ class App extends Component {
 
     this.setState({
       searchMovie: resSearchMovie.data.results,
+      movieId: resSearchMovie.data.results.id,
     });
   }
 
@@ -40,7 +49,7 @@ class App extends Component {
   };
 
   render() {
-    console.log('search', this.state.searchMovie);
+    console.log('state', this.state);
     return (
       <>
         <TopBar handleChange={this.handleChange} keyword={this.state.keyword} />
@@ -50,7 +59,7 @@ class App extends Component {
           bestMovie={this.state.bestMovie}
           searchMovie={this.state.searchMovie}
         />
-        <SideBarNews />
+        <SideBarNews movies={this.state.upcomingtMovie} />
       </>
     );
   }

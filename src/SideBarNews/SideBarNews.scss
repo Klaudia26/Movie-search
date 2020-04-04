@@ -5,4 +5,18 @@
   top: 10rem;
   right: 0;
   bottom: 0;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__heading {
+    margin: 40px 0 30px 0;
+  }
+
+  img {
+    width: 100px;
+  }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import './MovieItem.scss';
 
 const MovieItem = (props) => {
+  // const imageWidth = props.imageWidth ? props.imageWidth : 200
   return (
     <li key={props.movie.id} className="movieList__item">
       <div>
