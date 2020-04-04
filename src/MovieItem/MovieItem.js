@@ -2,7 +2,6 @@ import React from 'react';
 import './MovieItem.scss';
 
 const MovieItem = (props) => {
-  // const imageWidth = props.imageWidth ? props.imageWidth : 200
   return (
     <li key={props.movie.id} className="movieList__item">
       <div>
@@ -12,7 +11,8 @@ const MovieItem = (props) => {
         />
       </div>
       <p>{props.movie.title}</p>
-      <p>{props.movie.vote_average}</p>
+      {!props.hideRating && <p>{props.movie.vote_average}</p>}
+      <p>{props.release}</p>
     </li>
   );
 };

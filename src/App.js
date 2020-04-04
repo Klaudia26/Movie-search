@@ -49,7 +49,6 @@ class App extends Component {
   };
 
   render() {
-    console.log('state', this.state);
     return (
       <>
         <TopBar handleChange={this.handleChange} keyword={this.state.keyword} />

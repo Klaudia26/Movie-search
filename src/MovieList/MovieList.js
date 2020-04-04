@@ -8,7 +8,7 @@ class MovieList extends Component {
       <div className="movieList">
         <ul className="movieList__list">
           {this.props.searchMovie.map((movie, i) => {
-            return <MovieItem movie={movie} />;
+            return <MovieItem movie={movie} key={movie.id} />;
           })}
         </ul>
         {this.props.searchMovie.length === 0 && (
@@ -19,7 +19,7 @@ class MovieList extends Component {
                 if (i > 3) {
                   return;
                 }
-                return <MovieItem movie={movie} />;
+                return <MovieItem movie={movie} key={movie.id} />;
               })}
             </ul>
             <h2 className="movieList__heading">bestMovie</h2>
@@ -28,7 +28,7 @@ class MovieList extends Component {
                 if (i > 3) {
                   return;
                 }
-                return <MovieItem movie={movie} />;
+                return <MovieItem movie={movie} key={movie.id} />;
               })}
             </ul>
           </div>

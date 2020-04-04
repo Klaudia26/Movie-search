@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import { GoDeviceCameraVideo } from 'react-icons/go';
 import './TopBar.scss';
-
 class TopBar extends Component {
   render() {
     return (
       <div className="topBar">
         <div className="logo-wrapper">
-          <div className="logo-wrapper__logo">Logo</div>
+          <div className="logo-wrapper__logo">
+            <GoDeviceCameraVideo />
+          </div>
         </div>
 
         <div className="search-wrapper">

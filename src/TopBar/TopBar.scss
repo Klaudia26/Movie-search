@@ -8,14 +8,25 @@
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   .logo-wrapper {
     &__logo {
+      color: #4ff7c6;
+      font-size: 4rem;
+      line-height: 0;
     }
   }
 
   .search-wrapper {
     &__search {
+      width: 400px;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-radius: 100px;
+      border: none;
+      outline: none;
     }
   }
 
@@ -30,6 +41,11 @@
 
       a {
         text-decoration: none;
+        color: grey;
+
+        &:hover {
+          color: #fff;
+        }
       }
     }
   }

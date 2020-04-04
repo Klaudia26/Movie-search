@@ -13,17 +13,12 @@ class SideBarNews extends Component {
               return;
             }
             return (
-              <MovieItem movie={movie} />
-
-              // <li>
-              //   <h3>{movie.title}</h3>
-              //   <div>
-              //     <img
-              //       src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-              //       alt="avatar"
-              //     />
-              //   </div>
-              // </li>
+              <MovieItem
+                movie={movie}
+                release={movie.release_date}
+                hideRating
+                key={movie.id}
+              />
             );
           })}
         </ul>

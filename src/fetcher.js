@@ -26,6 +26,5 @@ export const fetchBestMovies = async () => {
 export const fetchUpcomingMovies = async () => {
   const url = `${baseUrl}/3/movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}`;
   const response = await axios.get(url);
-  console.log('tooo', response);
   return response;
 };
