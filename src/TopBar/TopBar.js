@@ -11,6 +11,9 @@ class TopBar extends Component {
 
         <div className="search-wrapper">
           <input
+            onChange={this.props.handleChange}
+            value={this.props.keyword}
+            name="keyword"
             placeholder="Search any movies or tv shows"
             className="search-wrapper__search"
           />

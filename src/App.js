@@ -3,19 +3,20 @@ import TopBar from './TopBar/TopBar';
 import SideBarFilters from './SideBarFilters/SideBarFilters';
 import SideBarNews from './SideBarNews/SideBarNews';
 import MovieList from './MovieList/MovieList';
-import { fetchTopMovies, fetchBestMovies } from './fetcher';
+import { fetchTopMovies, fetchBestMovies, fetchSearchMovies } from './fetcher';
 import './main.scss';
 
 class App extends Component {
   state = {
+    searchMovie: [],
     topMovie: [],
     bestMovie: [],
+    keyword: '',
   };
 
   async componentDidMount() {
     const resTopMovie = await fetchTopMovies();
     const resBestMovie = await fetchBestMovies();
-    console.log('nowe', resTopMovie);
 
     this.setState({
       topMovie: resTopMovie.data.results,
@@ -23,15 +24,31 @@ class App extends Component {
     });
   }
 
+  async searchMovie(keyword) {
+    const resSearchMovie = await fetchSearchMovies(keyword);
+
+    this.setState({
+      searchMovie: resSearchMovie.data.results,
+    });
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+    this.searchMovie(e.target.value);
+  };
+
   render() {
-    console.log(this.state.data);
+    console.log('search', this.state.searchMovie);
     return (
       <>
-        <TopBar />
+        <TopBar handleChange={this.handleChange} keyword={this.state.keyword} />
         <SideBarFilters />
         <MovieList
           topMovie={this.state.topMovie}
           bestMovie={this.state.bestMovie}
+          searchMovie={this.state.searchMovie}
         />
         <SideBarNews />
       </>

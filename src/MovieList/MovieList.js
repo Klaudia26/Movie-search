@@ -5,6 +5,24 @@ class MovieList extends Component {
   render() {
     return (
       <div className="movieList">
+        <div>
+          <ul className="movieList__list">
+            {this.props.searchMovie.map((movie) => {
+              return (
+                <li key={movie.id} className="movieList__item">
+                  <div>
+                    <img
+                      src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                      alt="avatar"
+                    />
+                  </div>
+                  <p>{movie.title}</p>
+                  <p>{movie.vote_average}</p>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
         <div className="movieList__wrapper">
           <h2 className="movieList__heading">Weekly Top Rated Movies</h2>
           <ul className="movieList__list">
