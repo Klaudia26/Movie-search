@@ -8,6 +8,7 @@ const MovieItem = (props) => {
         <img
           src={`https://image.tmdb.org/t/p/w200${props.movie.poster_path}`}
           alt="avatar"
+          className="movieList__item-image"
         />
       </div>
       <p>{props.movie.title}</p>

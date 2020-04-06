@@ -28,3 +28,17 @@ export const fetchUpcomingMovies = async () => {
   const response = await axios.get(url);
   return response;
 };
+
+export const fetchTvShows = async (keyword) => {
+  const url = `${baseUrl}/3/search/tv?api_key=${process.env.REACT_APP_API_KEY}&query=${keyword}`;
+  const response = await axios.get(url);
+
+  return response;
+};
+
+export const fetchTvPopular = async () => {
+  const url = `${baseUrl}/3/tv/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`;
+  const response = await axios.get(url);
+
+  return response;
+};

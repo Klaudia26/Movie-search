@@ -1,5 +1,8 @@
-.movieItem {
-  border: 1px solid red;
-  width: 200px;
-  height: 300px;
+.movieList__item {
+  flex: 1 1 25%;
+  padding: 0 20px;
+
+  &-image {
+    width: 100%;
+  }
 }

@@ -1,63 +1,65 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import TopBar from './TopBar/TopBar';
 import SideBarFilters from './SideBarFilters/SideBarFilters';
 import SideBarNews from './SideBarNews/SideBarNews';
-import MovieList from './MovieList/MovieList';
-import {
-  fetchTopMovies,
-  fetchBestMovies,
-  fetchSearchMovies,
-  fetchUpcomingMovies,
-} from './fetcher';
+import * as fetcher from './fetcher';
 import './main.scss';
+import MainPage from './MovieViews/MainPage';
+import MoviePage from './MovieViews/MoviePage';
+import TvShowsPage from './MovieViews/TvShowsPage';
 
 class App extends Component {
   state = {
-    searchMovie: [],
-    topMovie: [],
-    bestMovie: [],
     upcomingtMovie: [],
+    tvShows: [],
     keyword: '',
   };
 
   async componentDidMount() {
-    const resTopMovie = await fetchTopMovies();
-    const resBestMovie = await fetchBestMovies();
-    const resupcomingtMovie = await fetchUpcomingMovies();
+    const resupcomingtMovie = await fetcher.fetchUpcomingMovies();
 
     this.setState({
-      topMovie: resTopMovie.data.results,
-      bestMovie: resBestMovie.data.results,
       upcomingtMovie: resupcomingtMovie.data.results,
     });
   }
 
-  async searchMovie(keyword) {
-    const resSearchMovie = await fetchSearchMovies(keyword);
+  // async fetchTvShows(keyword) {
+  //   const resSearchMovie = await fetcher.fetchSearchMovies(keyword);
 
-    this.setState({
-      searchMovie: resSearchMovie.data.results,
-      movieId: resSearchMovie.data.results.id,
-    });
-  }
+  //   this.setState({
+  //     tvShows: resSearchMovie.data.results,
+  //   });
+  // }
 
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
-    this.searchMovie(e.target.value);
   };
 
   render() {
     return (
       <>
-        <TopBar handleChange={this.handleChange} keyword={this.state.keyword} />
-        <SideBarFilters />
-        <MovieList
-          topMovie={this.state.topMovie}
-          bestMovie={this.state.bestMovie}
-          searchMovie={this.state.searchMovie}
-        />
+        <Router>
+          <>
+            <TopBar
+              handleChange={this.handleChange}
+              keyword={this.state.keyword}
+            />
+            <SideBarFilters />
+            <Route exact path="/" component={MainPage} />
+
+            <Route
+              path="/movies"
+              render={() => <MoviePage keyword={this.state.keyword} />}
+            />
+            <Route
+              path="/tvshows"
+              render={() => <TvShowsPage keyword={this.state.keyword} />}
+            />
+          </>
+        </Router>
         <SideBarNews movies={this.state.upcomingtMovie} />
       </>
     );
