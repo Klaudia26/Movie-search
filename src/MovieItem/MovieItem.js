@@ -1,5 +1,6 @@
 import React from 'react';
 import './MovieItem.scss';
+import { MdStar } from 'react-icons/md';
 
 const MovieItem = (props) => {
   return (
@@ -12,7 +13,12 @@ const MovieItem = (props) => {
         />
       </div>
       <p>{props.movie.title}</p>
-      {!props.hideRating && <p>{props.movie.vote_average}</p>}
+      {!props.hideRating && (
+        <p>
+          <MdStar />
+          {props.movie.vote_average}
+        </p>
+      )}
       <p>{props.release}</p>
     </li>
   );

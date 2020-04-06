@@ -42,3 +42,10 @@ export const fetchTvPopular = async () => {
 
   return response;
 };
+
+export const fetchAllMoviesAndTvShows = async (keyword) => {
+  const url = `${baseUrl}/3/search/multi?api_key=${process.env.REACT_APP_API_KEY}&query=${keyword}`;
+  const response = await axios.get(url);
+
+  return response;
+};

@@ -1,0 +1,8 @@
+.scroll-wrapper {
+  width: calc(100% - 40rem);
+  height: calc(100% - 10rem);
+  margin-left: 20rem;
+  margin-top: 10rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

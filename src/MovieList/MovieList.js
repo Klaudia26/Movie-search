@@ -12,10 +12,12 @@ class MovieList extends Component {
               return <MovieItem movie={movie} key={movie.id} />;
             })}
         </ul>
-        {!this.props.searchMovie && (
-          <div className="scrollWrapper">
+
+        {this.props.searchMovie.length === 0 && (
+          <div>
             <h2 className="movieList__heading">topMovie</h2>
             <ul className="movieList__list">
+              {console.log('topMovie', this.props.topMovie)}
               {this.props.topMovie &&
                 this.props.topMovie.map((movie, i) => {
                   if (i > 3) {
@@ -24,6 +26,7 @@ class MovieList extends Component {
                   return <MovieItem movie={movie} key={movie.id} />;
                 })}
             </ul>
+
             <h2 className="movieList__heading">bestMovie</h2>
             <ul className="movieList__list">
               {this.props.bestMovie &&

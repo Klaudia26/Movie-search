@@ -6,6 +6,7 @@ class MainPage extends Component {
   state = {
     topMovie: [],
     bestMovie: [],
+    searchMovieAndTv: [],
   };
 
   async componentDidMount() {
@@ -18,12 +19,29 @@ class MainPage extends Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    console.log('this.props.keyword', this.props.keyword);
+    console.log('prevProps.keyword', prevProps.keyword);
+
+    if (this.props.keyword !== prevProps.keyword) {
+      this.fetchAllMoviesAndTvShows(this.props.keyword);
+    }
+  }
+
+  async fetchAllMoviesAndTvShows(keyword) {
+    const resSearchMovie = await fetcher.fetchAllMoviesAndTvShows(keyword);
+    this.setState({
+      searchMovieAndTv: resSearchMovie.data.results,
+    });
+  }
+
   render() {
     return (
       <div>
         <MovieList
           topMovie={this.state.topMovie}
           bestMovie={this.state.bestMovie}
+          searchMovie={this.state.searchMovieAndTv}
         />
       </div>
     );

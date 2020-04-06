@@ -8,6 +8,7 @@ import './main.scss';
 import MainPage from './MovieViews/MainPage';
 import MoviePage from './MovieViews/MoviePage';
 import TvShowsPage from './MovieViews/TvShowsPage';
+import Scroll from './Scroll/Scroll';
 
 class App extends Component {
   state = {
@@ -48,15 +49,31 @@ class App extends Component {
               keyword={this.state.keyword}
             />
             <SideBarFilters />
-            <Route exact path="/" component={MainPage} />
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Scroll>
+                  <MainPage keyword={this.state.keyword} />
+                </Scroll>
+              )}
+            />
 
             <Route
               path="/movies"
-              render={() => <MoviePage keyword={this.state.keyword} />}
+              render={() => (
+                <Scroll>
+                  <MoviePage keyword={this.state.keyword} />
+                </Scroll>
+              )}
             />
             <Route
               path="/tvshows"
-              render={() => <TvShowsPage keyword={this.state.keyword} />}
+              render={() => (
+                <Scroll>
+                  <TvShowsPage keyword={this.state.keyword} />
+                </Scroll>
+              )}
             />
           </>
         </Router>

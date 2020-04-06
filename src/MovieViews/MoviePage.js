@@ -32,7 +32,7 @@ class MoviePage extends Component {
   }
   render() {
     return (
-      <div className="scrollWrapper">
+      <div>
         <MovieList searchMovie={this.state.searchMovie} />
       </div>
     );
