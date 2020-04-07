@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MovieItem from '../MovieItem/MovieItem';
 import './SideBarNews.scss';
+import '../Scroll/scroll.scss';
 
 class SideBarNews extends Component {
   render() {

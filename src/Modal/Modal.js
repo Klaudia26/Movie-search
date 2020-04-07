@@ -12,7 +12,6 @@ const Modal = ({ closeModal, modalContent }) => {
         </div>
 
         <div className="modalContent">{modalContent}</div>
-        {/* <div className="modal-action"></div> */}
       </div>
     </div>,
     document.getElementById('modal')

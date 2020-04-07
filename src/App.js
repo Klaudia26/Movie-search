@@ -77,7 +77,9 @@ class App extends Component {
             />
           </>
         </Router>
-        <SideBarNews movies={this.state.upcomingtMovie} />
+        <Scroll>
+          <SideBarNews movies={this.state.upcomingtMovie} />
+        </Scroll>
       </>
     );
   }
