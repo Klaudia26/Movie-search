@@ -4,7 +4,11 @@ import { MdStar } from 'react-icons/md';
 
 const MovieItem = (props) => {
   return (
-    <li key={props.movie.id} className="movieList__item">
+    <li
+      key={props.movie.id}
+      className="movieList__item"
+      onClick={() => props.handleClick(props.movie.id)}
+    >
       <div>
         <img
           src={`https://image.tmdb.org/t/p/w200${props.movie.poster_path}`}

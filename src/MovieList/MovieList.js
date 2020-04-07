@@ -9,7 +9,13 @@ class MovieList extends Component {
         <ul className="movieList__list">
           {this.props.searchMovie &&
             this.props.searchMovie.map((movie, i) => {
-              return <MovieItem movie={movie} key={movie.id} />;
+              return (
+                <MovieItem
+                  movie={movie}
+                  key={movie.id}
+                  handleClick={this.props.handleClick}
+                />
+              );
             })}
         </ul>
 
@@ -17,13 +23,18 @@ class MovieList extends Component {
           <div>
             <h2 className="movieList__heading">topMovie</h2>
             <ul className="movieList__list">
-              {console.log('topMovie', this.props.topMovie)}
               {this.props.topMovie &&
                 this.props.topMovie.map((movie, i) => {
                   if (i > 3) {
                     return;
                   }
-                  return <MovieItem movie={movie} key={movie.id} />;
+                  return (
+                    <MovieItem
+                      movie={movie}
+                      key={movie.id}
+                      handleClick={this.props.handleClick}
+                    />
+                  );
                 })}
             </ul>
 
@@ -34,7 +45,13 @@ class MovieList extends Component {
                   if (i > 3) {
                     return;
                   }
-                  return <MovieItem movie={movie} key={movie.id} />;
+                  return (
+                    <MovieItem
+                      movie={movie}
+                      key={movie.id}
+                      handleClick={this.props.handleClick}
+                    />
+                  );
                 })}
             </ul>
           </div>

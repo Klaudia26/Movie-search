@@ -1,0 +1,61 @@
+.dimmer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalBody {
+  position: relative;
+  width: 800px;
+  overflow: hidden;
+  color: #fff;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 300px 1fr;
+  border-radius: 5px;
+}
+
+.modalContent {
+  background-color: #fff;
+}
+
+.modalContent-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: cornflowerblue;
+  text-transform: uppercase;
+  overflow: hidden;
+  padding: 100px 0;
+}
+
+.modal-avatar {
+  width: 200px;
+}
+
+.modal-title {
+  &--underline {
+    display: block;
+    width: 90px;
+    margin: 0 auto;
+    border-bottom: 1.4px solid #94f494;
+    padding: 3px;
+  }
+}
+.btn-close {
+  font-size: 30px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
