@@ -11,31 +11,6 @@
   align-items: center;
 }
 
-.modalContent {
-  display: flex;
-  background-color: white;
-  color: #000;
-  padding: 50px;
-  width: 700px;
-  border-radius: 10px;
-}
-
-.modalBody {
-  position: relative;
-}
-
-.modalContent-left {
-  margin-right: 50px;
-}
-
-.modal-action {
-  position: absolute;
-  right: 20px;
-}
-.description {
-  margin: 20px 0;
-}
-
 .btn {
   padding: 10px 30px;
   border: none;

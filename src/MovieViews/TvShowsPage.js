@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as fetcher from '../fetcher';
 import MovieList from '../MovieList/MovieList';
-import MovieModal from '../Modal/MovieModal';
+import MovieModal from '../Modal/MovieModal/MovieModal';
 import './MovieViews.scss';
 
 class MovieViews extends Component {

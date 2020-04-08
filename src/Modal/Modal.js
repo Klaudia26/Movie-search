@@ -10,7 +10,6 @@ const Modal = ({ closeModal, modalContent }) => {
         <div className="close-icon" onClick={closeModal}>
           <IoMdClose />
         </div>
-
         <div className="modalContent">{modalContent}</div>
       </div>
     </div>,

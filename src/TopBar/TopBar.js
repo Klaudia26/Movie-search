@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { GoDeviceCameraVideo } from 'react-icons/go';
+import { FaUser } from 'react-icons/fa';
+import UserModal from '../Modal/UserModal/UserModal';
 import './TopBar.scss';
 class TopBar extends Component {
+  state = {
+    isModalUserOpen: false,
+  };
+
+  closeModal = () => {
+    this.setState({
+      isModalUserOpen: false,
+    });
+  };
+
+  handleClick = () => {
+    this.setState({
+      isModalUserOpen: true,
+    });
+  };
+
   render() {
     return (
       <div className="topBar">
@@ -33,13 +51,17 @@ class TopBar extends Component {
             <li className="nav__item">
               <Link to="/watchlist">Watchlist</Link>
             </li>
-            <li className="nav__item">
-              <a href="#">
-                <img alt="avatar" />
+            <li className="nav__item" onClick={this.handleClick}>
+              <a href="#" className="nav__item--user">
+                <FaUser />
               </a>
             </li>
           </ul>
         </div>
+
+        {this.state.isModalUserOpen && (
+          <UserModal closeModal={this.closeModal} />
+        )}
       </div>
     );
   }

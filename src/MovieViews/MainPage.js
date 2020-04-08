@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as fetcher from '../fetcher';
 import MovieList from '../MovieList/MovieList';
-import MovieModal from '../Modal/MovieModal';
+import MovieModal from '../Modal/MovieModal/MovieModal';
 
 class MainPage extends Component {
   state = {
@@ -9,6 +9,7 @@ class MainPage extends Component {
     bestMovie: [],
     searchMovieAndTv: [],
     isModalOpen: false,
+    isModlUserOpen: false,
     foundMovie: null,
   };
 
@@ -53,7 +54,6 @@ class MainPage extends Component {
   };
 
   render() {
-    console.log('object', this.state.foundMovie);
     return (
       <div>
         <MovieList

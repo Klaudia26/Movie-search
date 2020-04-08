@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { MdStar } from 'react-icons/md';
-import Modal from './Modal';
+import Modal from '../Modal';
+import './MovieModal.scss';
 
 class MovieModal extends Component {
   renderContent = () => {
