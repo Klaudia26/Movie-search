@@ -1,0 +1,37 @@
+.modal-user {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .modal-avatar {
+      font-size: 7rem;
+      border: 1px solid black;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 7rem;
+      padding: 15px;
+    }
+    .modal-name {
+      margin: 2rem 0 3rem 0;
+    }
+    .list {
+      &__item {
+        border-top: 1px solid lightgray;
+
+        &:last-child {
+          border-bottom: 1px solid lightgray;
+        }
+
+        &-link {
+          display: flex;
+          padding: 2rem 15rem;
+          cursor: pointer;
+        }
+        &-icon {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+}

@@ -9,6 +9,37 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .modal {
+    background-color: white;
+    color: #000;
+    width: 700px;
+    border-radius: 10px;
+    position: relative;
+
+    &__header {
+      border-bottom: 1px solid grey;
+      padding: 30px;
+
+      .close-icon {
+        color: #000;
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 27px;
+        cursor: pointer;
+      }
+    }
+
+    &__content {
+      border-bottom: 1px solid grey;
+      padding: 30px;
+    }
+
+    &__actions {
+      padding: 30px;
+    }
+  }
 }
 
 .btn {
@@ -32,13 +63,4 @@
   &:active {
     transform: translateY(0px);
   }
-}
-
-.close-icon {
-  color: #000;
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 27px;
-  cursor: pointer;
 }

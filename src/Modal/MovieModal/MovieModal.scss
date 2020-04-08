@@ -1,24 +1,23 @@
-.modalContent {
-  display: flex;
-  background-color: white;
-  color: #000;
-  padding: 50px;
-  width: 700px;
-  border-radius: 10px;
-}
+.modal-movie {
+  .modal-heading {
+  }
 
-.modalBody {
-  position: relative;
-}
+  &__content {
+    display: flex;
 
-.modalContent-left {
-  margin-right: 50px;
-}
+    &-left {
+      margin-right: 50px;
 
-.modal-action {
-  position: absolute;
-  right: 20px;
-}
-.description {
-  margin: 20px 0;
+      .image {
+      }
+    }
+    &-right {
+      .dataOfRelease {
+        margin: 1rem 0;
+      }
+    }
+  }
+  &__actions {
+    text-align: right;
+  }
 }
