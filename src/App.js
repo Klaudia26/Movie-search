@@ -4,16 +4,18 @@ import TopBar from './TopBar/TopBar';
 import SideBarFilters from './SideBarFilters/SideBarFilters';
 import SideBarNews from './SideBarNews/SideBarNews';
 import * as fetcher from './fetcher';
-import './main.scss';
 import MainPage from './MovieViews/MainPage';
 import MoviePage from './MovieViews/MoviePage';
 import TvShowsPage from './MovieViews/TvShowsPage';
 import Scroll from './Scroll/Scroll';
+import WatchlistPage from './MovieViews/WatchlistPage';
+import './main.scss';
 
 class App extends Component {
   state = {
     upcomingtMovie: [],
     tvShows: [],
+    movieWatchList: [],
     keyword: '',
   };
 
@@ -39,6 +41,12 @@ class App extends Component {
     });
   };
 
+  addMovieToWatchMovie = (movie) => {
+    this.setState({
+      movieWatchList: this.state.movieWatchList.concat(movie),
+    });
+  };
+
   render() {
     return (
       <>
@@ -54,16 +62,21 @@ class App extends Component {
               path="/"
               render={() => (
                 <Scroll>
-                  <MainPage keyword={this.state.keyword} />
+                  <MainPage
+                    keyword={this.state.keyword}
+                    addMovieToWatchMovie={this.addMovieToWatchMovie}
+                  />
                 </Scroll>
               )}
             />
-
             <Route
               path="/movies"
               render={() => (
                 <Scroll>
-                  <MoviePage keyword={this.state.keyword} />
+                  <MoviePage
+                    keyword={this.state.keyword}
+                    addMovieToWatchMovie={this.addMovieToWatchMovie}
+                  />
                 </Scroll>
               )}
             />
@@ -71,7 +84,21 @@ class App extends Component {
               path="/tvshows"
               render={() => (
                 <Scroll>
-                  <TvShowsPage keyword={this.state.keyword} />
+                  <TvShowsPage
+                    keyword={this.state.keyword}
+                    addMovieToWatchMovie={this.addMovieToWatchMovie}
+                  />
+                </Scroll>
+              )}
+            />
+            <Route
+              path="/watchlist"
+              render={() => (
+                <Scroll>
+                  <WatchlistPage
+                    keyword={this.state.keyword}
+                    movieWatchList={this.state.movieWatchList}
+                  />
                 </Scroll>
               )}
             />

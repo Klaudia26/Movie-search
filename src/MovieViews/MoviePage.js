@@ -60,6 +60,7 @@ class MoviePage extends Component {
           <MovieModal
             closeModal={this.closeModal}
             foundMovie={this.state.foundMovie}
+            addMovieToWatchMovie={this.props.addMovieToWatchMovie}
           />
         )}
       </div>

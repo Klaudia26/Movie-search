@@ -19,12 +19,13 @@ class MovieList extends Component {
             })}
         </ul>
 
-        {this.props.searchMovie.length === 0 && (
-          <div>
-            <h2 className="movieList__heading">topMovie</h2>
-            <ul className="movieList__list">
-              {this.props.topMovie &&
-                this.props.topMovie.map((movie, i) => {
+        {this.props.searchMovie.length === 0 &&
+          this.props.topMovie &&
+          this.props.bestMovie && (
+            <div>
+              <h2 className="movieList__heading">topMovie</h2>
+              <ul className="movieList__list">
+                {this.props.topMovie.map((movie, i) => {
                   if (i > 3) {
                     return;
                   }
@@ -36,12 +37,11 @@ class MovieList extends Component {
                     />
                   );
                 })}
-            </ul>
+              </ul>
 
-            <h2 className="movieList__heading">bestMovie</h2>
-            <ul className="movieList__list">
-              {this.props.bestMovie &&
-                this.props.bestMovie.map((movie, i) => {
+              <h2 className="movieList__heading">bestMovie</h2>
+              <ul className="movieList__list">
+                {this.props.bestMovie.map((movie, i) => {
                   if (i > 3) {
                     return;
                   }
@@ -53,9 +53,9 @@ class MovieList extends Component {
                     />
                   );
                 })}
-            </ul>
-          </div>
-        )}
+              </ul>
+            </div>
+          )}
       </div>
     );
   }

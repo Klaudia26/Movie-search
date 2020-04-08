@@ -25,9 +25,11 @@ class TopBar extends Component {
     return (
       <div className="topBar">
         <div className="logo-wrapper">
-          <div className="logo-wrapper__logo">
-            <GoDeviceCameraVideo />
-          </div>
+          <Link to="/">
+            <div className="logo-wrapper__logo">
+              <GoDeviceCameraVideo />
+            </div>
+          </Link>
         </div>
 
         <div className="search-wrapper">

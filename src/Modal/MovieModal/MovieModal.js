@@ -32,12 +32,17 @@ class MovieModal extends Component {
     );
   };
 
+  handleWatchListButton = () => {
+    this.props.addMovieToWatchMovie(this.props.foundMovie);
+    this.props.closeModal();
+  };
+
   renderActions = () => (
     <div className="modal-movie__actions">
       <button className="btn btn-close" onClick={this.props.closeModal}>
         close
       </button>
-      <button className="btn" onClick={this.props.closeModal}>
+      <button className="btn" onClick={this.handleWatchListButton}>
         watchlist
       </button>
     </div>
