@@ -49,7 +49,7 @@ class MovieViews extends Component {
   };
   render() {
     return (
-      <div className="scrollWrapper">
+      <div className="tvShowPage">
         <MovieList
           searchMovie={this.state.searchMovie}
           handleClick={this.handleClick}

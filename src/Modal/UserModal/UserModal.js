@@ -3,6 +3,7 @@ import Modal from '../Modal';
 import { FaUser } from 'react-icons/fa';
 import { MdHome } from 'react-icons/md';
 import './UserModal.scss';
+import { Link } from 'react-router-dom';
 
 class UserModal extends Component {
   renderContent = () => {
@@ -26,28 +27,32 @@ class UserModal extends Component {
               </a>
             </li>
             <li className="list__item">
-              <a className="list__item-link">
+              <Link
+                to="/watchlist"
+                className="list__item-link"
+                onClick={this.props.closeModal}
+              >
                 <span className="list__item-icon">
                   <MdHome />
                 </span>
-                <p>profile</p>
-              </a>
+                <p>Watchlist</p>
+              </Link>
             </li>
             <li className="list__item">
-              <a className="list__item-link">
+              <Link to="/" className="list__item-link">
                 <span className="list__item-icon">
                   <MdHome />
                 </span>
-                <p>grateractions</p>
-              </a>
+                <p>Sign up</p>
+              </Link>
             </li>
             <li className="list__item">
-              <a className="list__item-link">
+              <Link to="/" className="list__item-link">
                 <span className="list__item-icon">
                   <MdHome />
                 </span>
                 <p>grate</p>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

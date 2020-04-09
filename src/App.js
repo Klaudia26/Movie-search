@@ -13,25 +13,16 @@ import './main.scss';
 
 class App extends Component {
   state = {
-    upcomingtMovie: [],
     tvShows: [],
     movieWatchList: [],
     keyword: '',
   };
 
-  async componentDidMount() {
-    const resupcomingtMovie = await fetcher.fetchUpcomingMovies();
-
-    this.setState({
-      upcomingtMovie: resupcomingtMovie.data.results,
-    });
-  }
-
-  // async fetchTvShows(keyword) {
-  //   const resSearchMovie = await fetcher.fetchSearchMovies(keyword);
+  // async componentDidMount() {
+  //   const resupcomingtMovie = await fetcher.fetchUpcomingMovies();
 
   //   this.setState({
-  //     tvShows: resSearchMovie.data.results,
+  //     upcomingtMovie: resupcomingtMovie.data.results,
   //   });
   // }
 
@@ -105,7 +96,7 @@ class App extends Component {
           </>
         </Router>
         <Scroll>
-          <SideBarNews movies={this.state.upcomingtMovie} />
+          <SideBarNews />
         </Scroll>
       </>
     );
