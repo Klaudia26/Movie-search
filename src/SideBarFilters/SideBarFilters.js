@@ -22,11 +22,15 @@ class SideBarFilters extends Component {
         <ul>
           {this.state.genres.map((genre) => {
             return (
-              <li
-                key={genre.id}
-                onClick={() => this.props.handelFilter(genre.id)}
-              >
-                {genre.name}
+              <li key={genre.id}>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={this.props.activeFilters.includes(genre.id)}
+                    onChange={() => this.props.handelFilter(genre.id)}
+                  />
+                  {genre.name}
+                </label>
               </li>
             );
           })}

@@ -48,6 +48,7 @@ class App extends Component {
   };
 
   render() {
+    console.log('aaa', this.state.activeFilters);
     return (
       <>
         <Router>
@@ -56,7 +57,10 @@ class App extends Component {
               handleChange={this.handleChange}
               keyword={this.state.keyword}
             />
-            <SideBarFilters handelFilter={this.handelFilter} />
+            <SideBarFilters
+              handelFilter={this.handelFilter}
+              activeFilters={this.state.activeFilters}
+            />
             <Route
               exact
               path="/"

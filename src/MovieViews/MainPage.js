@@ -57,9 +57,6 @@ class MainPage extends Component {
     const { activeFilters } = this.props;
     const { searchMovieAndTv } = this.state;
 
-    console.log('activeFilters', activeFilters);
-    console.log('searchMovieAndTv', searchMovieAndTv);
-
     let moviesToRender = searchMovieAndTv;
 
     activeFilters.length > 0 &&
