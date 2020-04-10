@@ -43,8 +43,8 @@ export const fetchTvPopular = async () => {
   return response;
 };
 
-export const fetchAllMoviesAndTvShows = async (keyword) => {
-  const url = `${baseUrl}/3/search/multi?api_key=${process.env.REACT_APP_API_KEY}&query=${keyword}`;
+export const fetchAllMoviesAndTvShows = async (keyword, page = 1) => {
+  const url = `${baseUrl}/3/search/multi?api_key=${process.env.REACT_APP_API_KEY}&query=${keyword}&page=${page}`;
   const response = await axios.get(url);
 
   return response;
@@ -53,6 +53,5 @@ export const fetchAllMoviesAndTvShows = async (keyword) => {
 export const fetchGenre = async () => {
   const url = `${baseUrl}/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`;
   const response = await axios.get(url);
-  console.log('genree', response);
   return response;
 };

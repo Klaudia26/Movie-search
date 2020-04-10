@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import TopBar from './TopBar/TopBar';
 import SideBarFilters from './SideBarFilters/SideBarFilters';
 import SideBarNews from './SideBarNews/SideBarNews';
-import * as fetcher from './fetcher';
 import MainPage from './MovieViews/MainPage';
 import MoviePage from './MovieViews/MoviePage';
 import TvShowsPage from './MovieViews/TvShowsPage';
@@ -48,7 +47,6 @@ class App extends Component {
   };
 
   render() {
-    console.log('aaa', this.state.activeFilters);
     return (
       <>
         <Router>

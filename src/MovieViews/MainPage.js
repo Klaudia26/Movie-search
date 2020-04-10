@@ -11,6 +11,7 @@ class MainPage extends Component {
     isModalOpen: false,
     isModlUserOpen: false,
     foundMovie: null,
+    page: 0,
   };
 
   async componentDidMount() {
@@ -33,8 +34,23 @@ class MainPage extends Component {
     const resSearchMovie = await fetcher.fetchAllMoviesAndTvShows(keyword);
     this.setState({
       searchMovieAndTv: resSearchMovie.data.results,
+      page: this.state.page + 1,
     });
   }
+
+  handleLoadMore = async () => {
+    const resSearchMovie = await fetcher.fetchAllMoviesAndTvShows(
+      this.props.keyword,
+      this.state.page + 1
+    );
+
+    this.setState({
+      searchMovieAndTv: this.state.searchMovieAndTv.concat(
+        resSearchMovie.data.results
+      ),
+      page: this.state.page + 1,
+    });
+  };
 
   closeModal = () => {
     this.setState({
@@ -68,8 +84,6 @@ class MainPage extends Component {
         );
       });
 
-    console.log('moviesToRender', moviesToRender);
-
     return (
       <div>
         <MovieList
@@ -78,6 +92,9 @@ class MainPage extends Component {
           searchMovie={moviesToRender}
           handleClick={this.handleClick}
         />
+        <button className="btn" onClick={this.handleLoadMore}>
+          load more
+        </button>
         {this.state.isModalOpen && (
           <MovieModal
             closeModal={this.closeModal}
