@@ -41,26 +41,3 @@
     }
   }
 }
-
-.btn {
-  padding: 10px 30px;
-  border: none;
-  outline: none;
-  background-color: #4ff7c6;
-  color: #fff;
-  border-radius: 5px;
-  margin: 0 5px;
-  font-size: 14px;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
-  }
-
-  &:active {
-    transform: translateY(0px);
-  }
-}

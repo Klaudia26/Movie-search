@@ -1,0 +1,65 @@
+.signUp {
+  margin: 3rem;
+  padding: 1rem;
+  position: relative;
+  .form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    grid-gap: 5rem;
+    grid-column-gap: 10rem;
+    .wrapper {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+      border-bottom: 1px solid grey;
+
+      .label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all ease-out 0.2s;
+      }
+      .input {
+        color: #fff;
+        line-height: 22px;
+        font-size: 2rem;
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        border: none;
+        outline: none;
+        background-color: transparent;
+      }
+      .input:focus + .label {
+        top: -2.2rem;
+        font-size: 1rem;
+      }
+
+      .input:not(:placeholder-shown) + .label {
+        top: -22px;
+        font-size: 1rem;
+      }
+
+      input[type='date']:required:invalid::-webkit-datetime-edit {
+        color: transparent;
+      }
+
+      input[type='date']:focus::-webkit-datetime-edit {
+        color: black !important;
+      }
+    }
+    .label-gender {
+      margin: 0 1rem;
+    }
+    .input-gender {
+      margin: 0 1rem;
+    }
+
+    .btn-form {
+      position: absolute;
+      right: 4rem;
+      bottom: -8rem;
+      padding: 10px 60px;
+    }
+  }
+}

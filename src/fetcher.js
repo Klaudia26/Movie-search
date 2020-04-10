@@ -49,3 +49,10 @@ export const fetchAllMoviesAndTvShows = async (keyword) => {
 
   return response;
 };
+
+export const fetchGenre = async () => {
+  const url = `${baseUrl}/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`;
+  const response = await axios.get(url);
+  console.log('genree', response);
+  return response;
+};

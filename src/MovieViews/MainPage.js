@@ -54,12 +54,31 @@ class MainPage extends Component {
   };
 
   render() {
+    const { activeFilters } = this.props;
+    const { searchMovieAndTv } = this.state;
+
+    console.log('activeFilters', activeFilters);
+    console.log('searchMovieAndTv', searchMovieAndTv);
+
+    let moviesToRender = searchMovieAndTv;
+
+    activeFilters.length > 0 &&
+      activeFilters.forEach((filterId) => {
+        moviesToRender = searchMovieAndTv.filter(
+          (movie) =>
+            (movie.genre_ids && movie.genre_ids.includes(filterId)) ||
+            (movie.genre && movie.genre === filterId)
+        );
+      });
+
+    console.log('moviesToRender', moviesToRender);
+
     return (
       <div>
         <MovieList
           topMovie={this.state.topMovie}
           bestMovie={this.state.bestMovie}
-          searchMovie={this.state.searchMovieAndTv}
+          searchMovie={moviesToRender}
           handleClick={this.handleClick}
         />
         {this.state.isModalOpen && (

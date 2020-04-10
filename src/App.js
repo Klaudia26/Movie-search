@@ -10,21 +10,30 @@ import TvShowsPage from './MovieViews/TvShowsPage';
 import Scroll from './Scroll/Scroll';
 import WatchlistPage from './MovieViews/WatchlistPage';
 import './main.scss';
+import SignUp from './SignUp/SignUp';
 
 class App extends Component {
   state = {
-    tvShows: [],
     movieWatchList: [],
     keyword: '',
+    activeFilters: [],
   };
 
-  // async componentDidMount() {
-  //   const resupcomingtMovie = await fetcher.fetchUpcomingMovies();
+  handelFilter = (filterId) => {
+    const { activeFilters } = this.state;
+    // if (activeFilters.includes(filterId)) {
+    if (activeFilters.some((filter) => filter === filterId)) {
+      const filters = activeFilters.filter((filter) => filter !== filterId);
 
-  //   this.setState({
-  //     upcomingtMovie: resupcomingtMovie.data.results,
-  //   });
-  // }
+      this.setState({
+        activeFilters: filters,
+      });
+      return;
+    }
+    this.setState({
+      activeFilters: activeFilters.concat(filterId),
+    });
+  };
 
   handleChange = (e) => {
     this.setState({
@@ -47,7 +56,7 @@ class App extends Component {
               handleChange={this.handleChange}
               keyword={this.state.keyword}
             />
-            <SideBarFilters />
+            <SideBarFilters handelFilter={this.handelFilter} />
             <Route
               exact
               path="/"
@@ -56,6 +65,7 @@ class App extends Component {
                   <MainPage
                     keyword={this.state.keyword}
                     addMovieToWatchMovie={this.addMovieToWatchMovie}
+                    activeFilters={this.state.activeFilters}
                   />
                 </Scroll>
               )}
@@ -90,6 +100,15 @@ class App extends Component {
                     keyword={this.state.keyword}
                     movieWatchList={this.state.movieWatchList}
                   />
+                </Scroll>
+              )}
+            />
+
+            <Route
+              path="/signup"
+              render={() => (
+                <Scroll>
+                  <SignUp />
                 </Scroll>
               )}
             />

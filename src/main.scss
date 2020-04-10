@@ -16,6 +16,15 @@ html {
   font-size: 62.5%;
 }
 
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  color: #fff;
+  background-color: black;
+}
+
 li {
   list-style-type: none;
 }
@@ -24,11 +33,26 @@ a {
   text-decoration: none;
   color: #000;
 }
-body {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  box-sizing: border-box;
-  font-size: 1.6rem;
+
+.btn {
+  padding: 10px 30px;
+  border: none;
+  outline: none;
+  background-color: #40d59d;
   color: #fff;
-  background-color: black;
+  border-radius: 5px;
+  margin: 0 5px;
+  font-size: 14px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0px);
+  }
 }

@@ -39,7 +39,11 @@ class UserModal extends Component {
               </Link>
             </li>
             <li className="list__item">
-              <Link to="/" className="list__item-link">
+              <Link
+                to="/signup"
+                className="list__item-link"
+                onClick={this.props.closeModal}
+              >
                 <span className="list__item-icon">
                   <MdHome />
                 </span>
