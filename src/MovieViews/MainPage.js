@@ -91,10 +91,9 @@ class MainPage extends Component {
           bestMovie={this.state.bestMovie}
           searchMovie={moviesToRender}
           handleClick={this.handleClick}
+          handleLoadMore={this.handleLoadMore}
         />
-        <button className="btn" onClick={this.handleLoadMore}>
-          load more
-        </button>
+
         {this.state.isModalOpen && (
           <MovieModal
             closeModal={this.closeModal}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MovieItem from '../MovieItem/MovieItem';
 import './MovieList.scss';
+import ButtonLoadMore from '../ButtonLoadMore/ButtonLoadMore';
 
 class MovieList extends Component {
   render() {
@@ -56,6 +57,9 @@ class MovieList extends Component {
               </ul>
             </div>
           )}
+        {this.props.searchMovie && this.props.searchMovie.length > 0 && (
+          <ButtonLoadMore handleLoadMore={this.props.handleLoadMore} />
+        )}
       </div>
     );
   }
