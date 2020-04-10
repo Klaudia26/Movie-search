@@ -47,6 +47,11 @@ a {
   cursor: pointer;
   transition: all 0.2s;
 
+  &--loadMore {
+    display: block;
+    margin: 1rem auto;
+  }
+
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);

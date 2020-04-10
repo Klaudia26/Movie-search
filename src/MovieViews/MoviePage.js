@@ -9,6 +9,7 @@ class MoviePage extends Component {
     searchMovie: [],
     isModalOpen: false,
     foundMovie: null,
+    page: 0,
   };
   async componentDidMount() {
     const keyword = this.props.keyword;
@@ -23,14 +24,17 @@ class MoviePage extends Component {
     this.searchMovie(keyword);
   }
 
-  componentDidUpdate() {
-    this.searchMovie(this.props.keyword);
+  componentDidUpdate(prevProps) {
+    if (this.props.keyword !== prevProps.keyword) {
+      this.searchMovie(this.props.keyword);
+    }
   }
 
   async searchMovie(keyword) {
     const resSearchMovie = await fetcher.fetchSearchMovies(keyword);
     this.setState({
       searchMovie: resSearchMovie.data.results,
+      page: this.state.page + 1,
     });
   }
 
@@ -49,12 +53,28 @@ class MoviePage extends Component {
     });
   };
 
+  handleLoadMore = async () => {
+    console.log('ll', this.state.page);
+    const resSearchMovie = await fetcher.fetchSearchMovies(
+      this.props.keyword,
+      this.state.page + 1
+    );
+    console.log(resSearchMovie);
+
+    this.setState({
+      searchMovie: this.state.searchMovie.concat(resSearchMovie.data.results),
+      page: this.state.page + 1,
+    });
+  };
+
   render() {
+    console.log('state', this.state);
     return (
       <div>
         <MovieList
           searchMovie={this.state.searchMovie}
           handleClick={this.handleClick}
+          handleLoadMore={this.handleLoadMore}
         />
         {this.state.isModalOpen && (
           <MovieModal

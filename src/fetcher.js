@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const baseUrl = 'https://api.themoviedb.org';
 
-export const fetchSearchMovies = async (keyword) => {
-  const url = `${baseUrl}/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${keyword}`;
+export const fetchSearchMovies = async (keyword, page = 1) => {
+  const url = `${baseUrl}/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${keyword}&page=${page}`;
   const response = await axios.get(url);
 
   return response;
@@ -29,8 +29,8 @@ export const fetchUpcomingMovies = async () => {
   return response;
 };
 
-export const fetchTvShows = async (keyword) => {
-  const url = `${baseUrl}/3/search/tv?api_key=${process.env.REACT_APP_API_KEY}&query=${keyword}`;
+export const fetchTvShows = async (keyword, page = 1) => {
+  const url = `${baseUrl}/3/search/tv?api_key=${process.env.REACT_APP_API_KEY}&query=${keyword}&page=${page}`;
   const response = await axios.get(url);
 
   return response;

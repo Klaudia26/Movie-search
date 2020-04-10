@@ -8,6 +8,7 @@ class MovieViews extends Component {
   state = {
     searchMovie: [],
     foundMovie: null,
+    page: 0,
   };
   async componentDidMount() {
     const keyword = this.props.keyword;
@@ -22,14 +23,17 @@ class MovieViews extends Component {
     this.searchMovie(keyword);
   }
 
-  componentDidUpdate() {
-    this.searchMovie(this.props.keyword);
+  componentDidUpdate(prevProps) {
+    if (this.props.keyword !== prevProps.keyword) {
+      this.searchMovie(this.props.keyword);
+    }
   }
 
   async searchMovie(keyword) {
     const resSearchMovie = await fetcher.fetchTvShows(keyword);
     this.setState({
       searchMovie: resSearchMovie.data.results,
+      page: this.state.page + 1,
     });
   }
 
@@ -47,12 +51,26 @@ class MovieViews extends Component {
       foundMovie: foundMovie,
     });
   };
+
+  handleLoadMore = async () => {
+    const resSearchMovie = await fetcher.fetchTvShows(
+      this.props.keyword,
+      this.state.page + 1
+    );
+
+    this.setState({
+      searchMovie: this.state.searchMovie.concat(resSearchMovie.data.results),
+      page: this.state.page + 1,
+    });
+  };
+
   render() {
     return (
       <div className="tvShowPage">
         <MovieList
           searchMovie={this.state.searchMovie}
           handleClick={this.handleClick}
+          handleLoadMore={this.handleLoadMore}
         />
 
         {this.state.isModalOpen && (
