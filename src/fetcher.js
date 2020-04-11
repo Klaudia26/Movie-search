@@ -55,3 +55,10 @@ export const fetchGenre = async () => {
   const response = await axios.get(url);
   return response;
 };
+
+export const fetchLanguages = async () => {
+  const url = `${baseUrl}/3/configuration/languages?api_key=${process.env.REACT_APP_API_KEY}`;
+  const response = await axios.get(url);
+  console.log('language', response);
+  return response;
+};

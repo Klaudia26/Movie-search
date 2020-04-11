@@ -30,8 +30,7 @@ class SideBarNews extends Component {
   handleClick = (movieId) => {
     const { upcomingtMovie } = this.state;
     const foundMovie = upcomingtMovie.find((movie) => movie.id === movieId);
-    console.log('movieId', movieId);
-    console.log('foundMovie', foundMovie);
+
     this.setState({
       isModalOpen: true,
       foundMovie,

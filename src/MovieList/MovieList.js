@@ -20,7 +20,11 @@ class MovieList extends Component {
             })}
         </ul>
 
-        {this.props.searchMovie.length === 0 &&
+        {this.props.isAnyActiveFilter &&
+          this.props.searchMovie.length === 0 && <p>0 results</p>}
+
+        {!this.props.isAnyActiveFilter &&
+          this.props.searchMovie.length === 0 &&
           this.props.topMovie &&
           this.props.bestMovie && (
             <div>

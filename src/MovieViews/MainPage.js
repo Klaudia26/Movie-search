@@ -70,23 +70,32 @@ class MainPage extends Component {
   };
 
   render() {
-    const { activeFilters } = this.props;
+    const { activeGeners, activeLanguages } = this.props;
     const { searchMovieAndTv } = this.state;
 
     let moviesToRender = searchMovieAndTv;
 
-    activeFilters.length > 0 &&
-      activeFilters.forEach((filterId) => {
-        moviesToRender = searchMovieAndTv.filter(
+    activeGeners.length > 0 &&
+      activeGeners.forEach((filterId) => {
+        moviesToRender = moviesToRender.filter(
           (movie) =>
             (movie.genre_ids && movie.genre_ids.includes(filterId)) ||
             (movie.genre && movie.genre === filterId)
         );
       });
 
+    activeLanguages.length > 0 &&
+      activeLanguages.forEach((filterId) => {
+        moviesToRender = moviesToRender.filter(
+          (movie) =>
+            movie.original_language && movie.original_language === filterId
+        );
+      });
+
     return (
       <div>
         <MovieList
+          isAnyActiveFilter={!!activeLanguages.length || !!activeGeners.length}
           topMovie={this.state.topMovie}
           bestMovie={this.state.bestMovie}
           searchMovie={moviesToRender}

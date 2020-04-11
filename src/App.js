@@ -15,23 +15,28 @@ class App extends Component {
   state = {
     movieWatchList: [],
     keyword: '',
-    activeFilters: [],
+    activeGeners: [],
+    activeLanguages: [],
   };
 
-  handelFilter = (filterId) => {
-    const { activeFilters } = this.state;
-    // if (activeFilters.includes(filterId)) {
-    if (activeFilters.some((filter) => filter === filterId)) {
-      const filters = activeFilters.filter((filter) => filter !== filterId);
+  handelFilter = (filterId, filterType) => {
+    // filterType = activeGeners || activeLanguages
+
+    // delete if exist
+    if (this.state[filterType].some((filter) => filter === filterId)) {
+      const filters = this.state[filterType].filter(
+        (filter) => filter !== filterId
+      );
 
       this.setState({
-        activeFilters: filters,
+        [filterType]: filters,
       });
-      return;
+    } else {
+      // otherwise add
+      this.setState({
+        [filterType]: this.state[filterType].concat(filterId),
+      });
     }
-    this.setState({
-      activeFilters: activeFilters.concat(filterId),
-    });
   };
 
   handleChange = (e) => {
@@ -57,7 +62,8 @@ class App extends Component {
             />
             <SideBarFilters
               handelFilter={this.handelFilter}
-              activeFilters={this.state.activeFilters}
+              activeGeners={this.state.activeGeners}
+              activeLanguages={this.state.activeLanguages}
             />
             <Route
               exact
@@ -67,7 +73,8 @@ class App extends Component {
                   <MainPage
                     keyword={this.state.keyword}
                     addMovieToWatchMovie={this.addMovieToWatchMovie}
-                    activeFilters={this.state.activeFilters}
+                    activeGeners={this.state.activeGeners}
+                    activeLanguages={this.state.activeLanguages}
                   />
                 </Scroll>
               )}
