@@ -12,7 +12,6 @@ class SideBarFilters extends Component {
   async componentDidMount() {
     const resGenre = await fetcher.fetchGenre();
     const resLanguage = await fetcher.fetchLanguages();
-    console.log(resLanguage.data);
 
     const languages = resLanguage.data.map((language) => {
       return {

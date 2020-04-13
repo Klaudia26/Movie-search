@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import MovieItem from '../MovieItem/MovieItem';
 import MovieModal from '../Modal/MovieModal/MovieModal';
 import * as fetcher from '../fetcher';
 import './SideBarNews.scss';
