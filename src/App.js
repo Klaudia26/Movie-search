@@ -86,6 +86,8 @@ class App extends Component {
                   <MoviePage
                     keyword={this.state.keyword}
                     addMovieToWatchMovie={this.addMovieToWatchMovie}
+                    activeGeners={this.state.activeGeners}
+                    activeLanguages={this.state.activeLanguages}
                   />
                 </Scroll>
               )}

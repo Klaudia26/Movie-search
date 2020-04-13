@@ -68,11 +68,28 @@ class MoviePage extends Component {
   };
 
   render() {
-    console.log('state', this.state);
+    let moviesToRender = this.state.searchMovie;
+    const { activeGeners, activeLanguages } = this.props;
+    activeGeners.length > 0 &&
+      activeGeners.forEach((filterId) => {
+        moviesToRender = moviesToRender.filter(
+          (movie) =>
+            (movie.genre_ids && movie.genre_ids.includes(filterId)) ||
+            (movie.genre && movie.genre === filterId)
+        );
+      });
+    activeLanguages.length > 0 &&
+      activeLanguages.forEach((filterId) => {
+        moviesToRender = moviesToRender.filter(
+          (movie) =>
+            movie.original_language && movie.original_language === filterId
+        );
+      });
+
     return (
       <div>
         <MovieList
-          searchMovie={this.state.searchMovie}
+          searchMovie={moviesToRender}
           handleClick={this.handleClick}
           handleLoadMore={this.handleLoadMore}
         />
