@@ -10,7 +10,6 @@ const Slider = (props) => {
         {props.movies.map((movie) => {
           return (
             <MovieItem
-              className="slide"
               movie={movie}
               key={movie.id}
               handleClick={props.handleClick}
