@@ -9,7 +9,7 @@ class MovieList extends Component {
       <div className="movieList">
         <ul className="movieList__list">
           {this.props.searchMovie &&
-            this.props.searchMovie.map((movie, i) => {
+            this.props.searchMovie.map((movie) => {
               return (
                 <MovieItem
                   movie={movie}
@@ -20,47 +20,6 @@ class MovieList extends Component {
             })}
         </ul>
 
-        {this.props.isAnyActiveFilter &&
-          this.props.searchMovie.length === 0 && <p>0 results</p>}
-
-        {!this.props.isAnyActiveFilter &&
-          this.props.searchMovie.length === 0 &&
-          this.props.topMovie &&
-          this.props.bestMovie && (
-            <div>
-              <h2 className="movieList__heading">topMovie</h2>
-              <ul className="movieList__list">
-                {this.props.topMovie.map((movie, i) => {
-                  if (i > 3) {
-                    return;
-                  }
-                  return (
-                    <MovieItem
-                      movie={movie}
-                      key={movie.id}
-                      handleClick={this.props.handleClick}
-                    />
-                  );
-                })}
-              </ul>
-
-              <h2 className="movieList__heading">bestMovie</h2>
-              <ul className="movieList__list">
-                {this.props.bestMovie.map((movie, i) => {
-                  if (i > 3) {
-                    return;
-                  }
-                  return (
-                    <MovieItem
-                      movie={movie}
-                      key={movie.id}
-                      handleClick={this.props.handleClick}
-                    />
-                  );
-                })}
-              </ul>
-            </div>
-          )}
         {this.props.searchMovie && this.props.searchMovie.length > 0 && (
           <ButtonLoadMore handleLoadMore={this.props.handleLoadMore} />
         )}
