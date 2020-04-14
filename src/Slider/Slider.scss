@@ -1,15 +1,13 @@
 .slider {
-  padding: 1rem;
   font-size: 16px;
 
   &__list {
     display: flex;
-    justify-content: center;
     overflow: hidden;
     overflow-x: scroll;
   }
 
   &__heading {
-    margin: 40px 0 30px 0;
+    margin-bottom: 20px;
   }
 }
