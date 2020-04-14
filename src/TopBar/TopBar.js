@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { GoDeviceCameraVideo } from 'react-icons/go';
 import { FaUser } from 'react-icons/fa';
 import UserModal from '../Modal/UserModal/UserModal';
@@ -25,11 +25,11 @@ class TopBar extends Component {
     return (
       <div className="topBar">
         <div className="logo-wrapper">
-          <Link to="/">
+          <NavLink to="/">
             <div className="logo-wrapper__logo">
               <GoDeviceCameraVideo />
             </div>
-          </Link>
+          </NavLink>
         </div>
 
         <div className="search-wrapper">
@@ -45,13 +45,19 @@ class TopBar extends Component {
         <div className="nav">
           <ul className="nav__list">
             <li className="nav__item">
-              <Link to="/movies">Movies</Link>
+              <NavLink to="/movies" activeClassName="active">
+                Movies
+              </NavLink>
             </li>
             <li className="nav__item">
-              <Link to="/tvshows">TV Shows</Link>
+              <NavLink to="/tvshows" activeClassName="active">
+                TV Shows
+              </NavLink>
             </li>
             <li className="nav__item">
-              <Link to="/watchlist">Watchlist</Link>
+              <NavLink to="/watchlist" activeClassName="active">
+                Watchlist
+              </NavLink>
             </li>
             <li className="nav__item" onClick={this.handleClick}>
               <a href="#" className="nav__item--user">
