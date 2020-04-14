@@ -3,6 +3,7 @@ import * as fetcher from '../fetcher';
 import MovieList from '../MovieList/MovieList';
 import MovieModal from '../Modal/MovieModal/MovieModal';
 import Slider from '../Slider/Slider';
+import Scroll from '../Scroll/Scroll';
 
 class MainPage extends Component {
   state = {
@@ -96,36 +97,38 @@ class MainPage extends Component {
     const isAnyActiveFilter = !!activeGeners.length || !!activeLanguages.length;
 
     return (
-      <div>
-        {!isAnyActiveFilter && searchMovieAndTv.length === 0 && (
-          <>
-            <Slider
-              handleClick={this.handleClick}
-              movies={this.state.topMovie}
-              heading="Top Movie"
-            />
-            <Slider
-              handleClick={this.handleClick}
-              movies={this.state.bestMovie}
-              heading="Best Movie"
-            />
-          </>
-        )}
+      <main className="main">
+        <Scroll>
+          {!isAnyActiveFilter && searchMovieAndTv.length === 0 && (
+            <>
+              <Slider
+                handleClick={this.handleClick}
+                movies={this.state.topMovie}
+                heading="Top Movie"
+              />
+              <Slider
+                handleClick={this.handleClick}
+                movies={this.state.bestMovie}
+                heading="Best Movie"
+              />
+            </>
+          )}
 
-        <MovieList
-          searchMovie={moviesToRender}
-          handleClick={this.handleClick}
-          handleLoadMore={this.handleLoadMore}
-        />
-
-        {this.state.isModalOpen && (
-          <MovieModal
-            closeModal={this.closeModal}
-            foundMovie={this.state.foundMovie}
-            addMovieToWatchMovie={this.props.addMovieToWatchMovie}
+          <MovieList
+            searchMovie={moviesToRender}
+            handleClick={this.handleClick}
+            handleLoadMore={this.handleLoadMore}
           />
-        )}
-      </div>
+
+          {this.state.isModalOpen && (
+            <MovieModal
+              closeModal={this.closeModal}
+              foundMovie={this.state.foundMovie}
+              addMovieToWatchMovie={this.props.addMovieToWatchMovie}
+            />
+          )}
+        </Scroll>
+      </main>
     );
   }
 }

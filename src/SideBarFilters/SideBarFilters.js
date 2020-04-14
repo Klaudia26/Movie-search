@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as fetcher from '../fetcher';
 import './SideBarFilters.scss';
-import SideBarFiltersList from '../SideBarFiltersList/SideBarFiltersList';
+import FiltersList from './FiltersList/FiltersList';
 
 class SideBarFilters extends Component {
   state = {
@@ -29,14 +29,15 @@ class SideBarFilters extends Component {
   render() {
     return (
       <div className="sideBarFilters">
-        <SideBarFiltersList
+        <FiltersList
           filterType="activeGeners"
           heading="Genre"
           filters={this.state.genres}
           activeFilters={this.props.activeGeners}
           handelFilter={this.props.handelFilter}
         />
-        <SideBarFiltersList
+
+        <FiltersList
           filterType="activeLanguages"
           heading="Language"
           filters={this.state.languages}

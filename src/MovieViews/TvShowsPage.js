@@ -66,7 +66,7 @@ class MovieViews extends Component {
 
   render() {
     return (
-      <div className="tvShowPage">
+      <main className="tvShowPage main">
         <MovieList
           searchMovie={this.state.searchMovie}
           handleClick={this.handleClick}
@@ -80,7 +80,7 @@ class MovieViews extends Component {
             addMovieToWatchMovie={this.props.addMovieToWatchMovie}
           />
         )}
-      </div>
+      </main>
     );
   }
 }

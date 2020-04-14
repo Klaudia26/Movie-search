@@ -87,7 +87,7 @@ class MoviePage extends Component {
       });
 
     return (
-      <div>
+      <main className="main">
         <MovieList
           searchMovie={moviesToRender}
           handleClick={this.handleClick}
@@ -100,7 +100,7 @@ class MoviePage extends Component {
             addMovieToWatchMovie={this.props.addMovieToWatchMovie}
           />
         )}
-      </div>
+      </main>
     );
   }
 }

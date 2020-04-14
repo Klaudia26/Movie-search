@@ -5,12 +5,12 @@ import './WatchlistPage.scss';
 class WatchlistPage extends Component {
   render() {
     return (
-      <div className="watchList">
+      <main className="watchList main">
         <MovieList
           searchMovie={this.props.movieWatchList}
           handleClick={() => {}}
         />
-      </div>
+      </main>
     );
   }
 }

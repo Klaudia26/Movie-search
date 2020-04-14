@@ -4,6 +4,7 @@ import * as fetcher from '../fetcher';
 import './SideBarNews.scss';
 import '../Scroll/scroll.scss';
 import MovieList from '../MovieList/MovieList';
+import Scroll from '../Scroll/Scroll';
 
 class SideBarNews extends Component {
   state = {
@@ -39,18 +40,19 @@ class SideBarNews extends Component {
   render() {
     return (
       <div className="sideBarNews">
-        <h2 className="sideBarNews__heading">Upcoming movie</h2>
-        <MovieList
-          searchMovie={this.state.upcomingtMovie}
-          handleClick={this.handleClick}
-        />
-        {this.state.isModalOpen && (
-          <MovieModal
-            foundMovie={this.state.foundMovie}
-            closeModal={this.closeModal}
+        <Scroll>
+          <h2 className="sideBarNews__heading">Upcoming movie</h2>
+          <MovieList
+            searchMovie={this.state.upcomingtMovie}
+            handleClick={this.handleClick}
           />
-        )}
-        })}
+          {this.state.isModalOpen && (
+            <MovieModal
+              foundMovie={this.state.foundMovie}
+              closeModal={this.closeModal}
+            />
+          )}
+        </Scroll>
       </div>
     );
   }

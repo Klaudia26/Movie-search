@@ -69,14 +69,12 @@ class App extends Component {
               exact
               path="/"
               render={() => (
-                <Scroll>
-                  <MainPage
-                    keyword={this.state.keyword}
-                    addMovieToWatchMovie={this.addMovieToWatchMovie}
-                    activeGeners={this.state.activeGeners}
-                    activeLanguages={this.state.activeLanguages}
-                  />
-                </Scroll>
+                <MainPage
+                  keyword={this.state.keyword}
+                  addMovieToWatchMovie={this.addMovieToWatchMovie}
+                  activeGeners={this.state.activeGeners}
+                  activeLanguages={this.state.activeLanguages}
+                />
               )}
             />
             <Route
@@ -115,19 +113,10 @@ class App extends Component {
               )}
             />
 
-            <Route
-              path="/signup"
-              render={() => (
-                <Scroll>
-                  <SignUp />
-                </Scroll>
-              )}
-            />
+            <Route path="/signup" render={() => <SignUp />} />
           </>
         </Router>
-        <Scroll>
-          <SideBarNews />
-        </Scroll>
+        <SideBarNews />
       </>
     );
   }
