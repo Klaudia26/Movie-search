@@ -19,12 +19,12 @@ class UserModal extends Component {
         <div className="modal-bottom">
           <ul className="list">
             <li className="list__item">
-              <a className="list__item-link">
+              <Link to="/" className="list__item-link">
                 <span className="list__item-icon">
                   <MdHome />
                 </span>
                 <p>home</p>
-              </a>
+              </Link>
             </li>
             <li className="list__item">
               <Link

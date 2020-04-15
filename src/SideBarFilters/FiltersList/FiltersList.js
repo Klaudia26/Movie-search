@@ -20,7 +20,7 @@ const FiltersList = (props) => {
                     }
                     className="input"
                   />
-                  <span class="checkmark" />
+                  <span className="checkmark" />
                   {filter.name}
                 </label>
               </li>

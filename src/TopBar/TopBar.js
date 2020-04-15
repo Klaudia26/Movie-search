@@ -60,9 +60,9 @@ class TopBar extends Component {
               </NavLink>
             </li>
             <li className="nav__item" onClick={this.handleClick}>
-              <a href="#" className="nav__item--user">
+              <span className="nav__item--user">
                 <FaUser />
-              </a>
+              </span>
             </li>
           </ul>
         </div>
