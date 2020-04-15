@@ -11,30 +11,87 @@ class SignUp extends Component {
     address: '',
     dataOfBirth: '',
     gender: 'female',
+    errors: [],
   };
 
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
+      errors: [],
     });
   };
 
-  handleSubmit = (e) => {
-    const userDate = {
-      name: this.state.name,
-      surname: this.state.surname,
-      email: this.state.email,
-      phone: this.state.phone,
-      address: this.state.address,
-      dateOfBirth: this.state.dateOfBirth,
-      gender: this.state.gender,
-    };
-    e.preventDefault();
-    this.setState({
-      data: this.state.data.concat(userDate),
-    });
+  isFormValid = () => {
+    const errors = [];
+
+    if (this.isFiledEmpty()) {
+      errors.push({ message: 'Fill in the empty fields.' });
+    }
+
+    if (this.isEmailValid()) {
+      errors.push({ message: 'Your emial is incorrect.' });
+    }
+
+    if (this.isPhoneValid()) {
+      errors.push({
+        message:
+          'Your phone number is incorrect. Must contain at least 4 characters but no more than 12 characters',
+      });
+    }
+
+    if (errors.length) {
+      this.setState({
+        errors: errors,
+      });
+      return false;
+    }
+
+    return true;
   };
+
+  isEmailValid = () => {
+    return !this.state.email.includes('@');
+  };
+
+  isPhoneValid = () => {
+    return this.state.phone.length < 4 || this.state.phone.length > 12;
+  };
+
+  isFiledEmpty = () => {
+    return (
+      !this.state.name.length ||
+      !this.state.surname.length ||
+      !this.state.email.length ||
+      !this.state.phone.length ||
+      !this.state.address.length ||
+      !this.state.dataOfBirth.length ||
+      !this.state.gender.length
+    );
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const isValid = this.isFormValid();
+
+    if (!isValid) {
+      return;
+    }
+    // const userDate = {
+    //   name: this.state.name,
+    //   surname: this.state.surname,
+    //   email: this.state.email,
+    //   phone: this.state.phone,
+    //   address: this.state.address,
+    //   dateOfBirth: this.state.dateOfBirth,
+    //   gender: this.state.gender,
+    // };
+    // this.setState({
+    //   data: this.state.data.concat(userDate),
+    // });
+  };
+
   render() {
+    console.log('STATE', this.state);
     return (
       <div className="signUp main">
         <form onSubmit={this.handleSubmit} className="form">
@@ -43,14 +100,18 @@ class SignUp extends Component {
               type="text"
               value={this.state.name}
               onChange={this.handleChange}
+              onBlur={this.handleBlure}
               name="name"
               id="name"
               className="input"
               placeholder=" "
             />
-            <label for="name" className="label">
+            <label htmlFor="name" className="label">
               Name
             </label>
+            {/* {this.state.errors &&
+              this.state.errors.name &&
+              this.state.errors.name.map((err) => <p>{err.message}</p>)} */}
           </div>
           <div className="wrapper">
             <input
@@ -62,7 +123,7 @@ class SignUp extends Component {
               className="input"
               placeholder=" "
             />
-            <label for="surname" className="label">
+            <label htmlFor="surname" className="label">
               Surname
             </label>
           </div>
@@ -77,7 +138,7 @@ class SignUp extends Component {
               className="input"
               placeholder=" "
             />
-            <label for="email" className="label">
+            <label htmlFor="email" className="label">
               Email
             </label>
           </div>
@@ -92,7 +153,7 @@ class SignUp extends Component {
               className="input"
               placeholder=" "
             />
-            <label for="phone" className="label">
+            <label htmlFor="phone" className="label">
               Phone
             </label>
           </div>
@@ -107,7 +168,7 @@ class SignUp extends Component {
               className="input"
               placeholder=" "
             />
-            <label for="address" className="label">
+            <label htmlFor="address" className="label">
               Address
             </label>
           </div>
@@ -122,13 +183,13 @@ class SignUp extends Component {
               className="input"
               placeholder=" "
             />
-            <label for="dataOfBirth" className="label">
+            <label htmlFor="dataOfBirth" className="label">
               Data Of Birth
             </label>
           </div>
 
           <div className="wrapper-gender">
-            <label for="female" className="label-gender">
+            <label htmlFor="female" className="label-gender">
               Female
               <input
                 type="radio"
@@ -139,7 +200,7 @@ class SignUp extends Component {
                 className="input-gender"
               />
             </label>
-            <label for="male" className="label-gender">
+            <label htmlFor="male" className="label-gender">
               Male
               <input
                 type="radio"
@@ -152,7 +213,7 @@ class SignUp extends Component {
             </label>
           </div>
           <div>
-            <label for="select" className="label">
+            <label htmlFor="select" className="label">
               Select
             </label>
             <select id="select">
@@ -165,6 +226,10 @@ class SignUp extends Component {
             Add
           </button>
         </form>
+        {this.state.errors.length > 0 &&
+          this.state.errors.map((error) => (
+            <p key={error.message}>{error.message}</p>
+          ))}
       </div>
     );
   }
