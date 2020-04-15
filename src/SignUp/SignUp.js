@@ -11,6 +11,7 @@ class SignUp extends Component {
     address: '',
     dataOfBirth: '',
     gender: 'female',
+    status: 'single',
     errors: [],
   };
 
@@ -193,10 +194,11 @@ class SignUp extends Component {
               Female
               <input
                 type="radio"
-                value={this.state.gender}
+                value="female"
                 onChange={this.handleChange}
-                name="female"
+                name="gender"
                 id="female"
+                checked={this.state.gender === 'female'}
                 className="input-gender"
               />
             </label>
@@ -204,9 +206,10 @@ class SignUp extends Component {
               Male
               <input
                 type="radio"
-                value={this.state.gender}
+                value="male"
                 onChange={this.handleChange}
-                name="male"
+                checked={this.state.gender === 'male'}
+                name="gender"
                 id="male"
                 className="input-gender"
               />
@@ -216,9 +219,11 @@ class SignUp extends Component {
             <label htmlFor="select" className="label">
               Select
             </label>
-            <select id="select">
+            <select id="select" name="status" onChange={this.handleChange}>
               <option value="single">Single</option>
-              <option value="maried">Maried</option>
+              <option value="maried" name="status" onChange={this.handleChange}>
+                Maried
+              </option>
             </select>
           </div>
 
@@ -226,10 +231,12 @@ class SignUp extends Component {
             Add
           </button>
         </form>
-        {this.state.errors.length > 0 &&
-          this.state.errors.map((error) => (
-            <p key={error.message}>{error.message}</p>
-          ))}
+        <div className="error-message">
+          {this.state.errors.length > 0 &&
+            this.state.errors.map((error) => (
+              <p key={error.message}>{error.message}</p>
+            ))}
+        </div>
       </div>
     );
   }

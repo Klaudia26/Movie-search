@@ -57,8 +57,17 @@
     .btn-form {
       position: absolute;
       right: 3rem;
-      bottom: 40%;
+      bottom: 100px;
       padding: 10px 60px;
     }
+  }
+
+  #select {
+    margin-left: 2rem;
+  }
+
+  .error-message {
+    color: red;
+    margin: 5rem 0;
   }
 }
