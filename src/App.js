@@ -116,7 +116,7 @@ class App extends Component {
             <Route path="/signup" render={() => <SignUp />} />
           </>
         </Router>
-        <SideBarNews />
+        <SideBarNews addMovieToWatchMovie={this.addMovieToWatchMovie} />
       </>
     );
   }

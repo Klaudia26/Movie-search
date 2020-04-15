@@ -50,6 +50,7 @@ class SideBarNews extends Component {
             <MovieModal
               foundMovie={this.state.foundMovie}
               closeModal={this.closeModal}
+              addMovieToWatchMovie={this.props.addMovieToWatchMovie}
             />
           )}
         </Scroll>
