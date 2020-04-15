@@ -88,6 +88,7 @@ class MoviePage extends Component {
 
     return (
       <main className="main">
+        <h2>Movies</h2>
         <MovieList
           searchMovie={moviesToRender}
           handleClick={this.handleClick}

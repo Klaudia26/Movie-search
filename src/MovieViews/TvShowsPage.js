@@ -67,6 +67,7 @@ class MovieViews extends Component {
   render() {
     return (
       <main className="tvShowPage main">
+        <h2>TV Shows</h2>
         <MovieList
           searchMovie={this.state.searchMovie}
           handleClick={this.handleClick}
