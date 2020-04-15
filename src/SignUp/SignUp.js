@@ -77,6 +77,12 @@ class SignUp extends Component {
     if (!isValid) {
       return;
     }
+
+    const userDate = { ...this.state };
+    const { errors, ...userData } = this.state;
+    localStorage.setItem('user', JSON.stringify(userData));
+    const user = localStorage.getItem('user');
+
     // const userDate = {
     //   name: this.state.name,
     //   surname: this.state.surname,
