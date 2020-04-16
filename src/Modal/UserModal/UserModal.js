@@ -13,13 +13,17 @@ class UserModal extends Component {
           <div className="modal-avatar">
             <FaUser />
           </div>
-          <h3 className="modal-name">Chris Martin</h3>
+          <h3 className="modal-name">{this.props.name}</h3>
         </div>
 
         <div className="modal-bottom">
           <ul className="list">
             <li className="list__item">
-              <Link to="/" className="list__item-link">
+              <Link
+                to="/"
+                className="list__item-link"
+                onClick={this.props.closeModal}
+              >
                 <span className="list__item-icon">
                   <MdHome />
                 </span>
@@ -40,22 +44,14 @@ class UserModal extends Component {
             </li>
             <li className="list__item">
               <Link
-                to="/signup"
+                to="/settingsaccount"
                 className="list__item-link"
                 onClick={this.props.closeModal}
               >
                 <span className="list__item-icon">
                   <MdHome />
                 </span>
-                <p>Sign up</p>
-              </Link>
-            </li>
-            <li className="list__item">
-              <Link to="/" className="list__item-link">
-                <span className="list__item-icon">
-                  <MdHome />
-                </span>
-                <p>grate</p>
+                <p>Settings Acount</p>
               </Link>
             </li>
           </ul>
