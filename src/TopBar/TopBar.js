@@ -59,16 +59,24 @@ class TopBar extends Component {
                 Watchlist
               </NavLink>
             </li>
-            <li className="nav__item" onClick={this.handleClick}>
-              <span className="nav__item--user">
-                <FaUser />
-              </span>
-            </li>
+            {this.props.user ? (
+              <li className="nav__item" onClick={this.handleClick}>
+                <span className="nav__item--user">
+                  <FaUser />
+                </span>
+              </li>
+            ) : (
+              <li className="nav__item">
+                <NavLink to="/signup" activeClassName="active">
+                  Signup
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
 
         {this.state.isModalUserOpen && (
-          <UserModal closeModal={this.closeModal} />
+          <UserModal closeModal={this.closeModal} name={this.state.user.name} />
         )}
       </div>
     );

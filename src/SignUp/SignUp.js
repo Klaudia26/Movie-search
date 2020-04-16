@@ -1,23 +1,43 @@
 import React, { Component } from 'react';
 import './SignUp.scss';
 
-class SignUp extends Component {
+class UserForm extends Component {
   state = {
-    date: [],
-    name: '',
-    surname: '',
-    email: '',
-    phone: '',
-    address: '',
-    dataOfBirth: '',
-    gender: 'female',
-    status: 'single',
+    user: {
+      name: '',
+      surname: '',
+      email: '',
+      phone: '',
+      address: '',
+      dataOfBirth: '',
+      gender: 'female',
+      status: 'single',
+    },
     errors: [],
   };
 
+  componentDidMount() {
+    if (this.props.user) {
+      this.setState({
+        user: { ...this.props.user },
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.user !== prevProps.user) {
+      this.setState({
+        user: { ...this.props.user },
+      });
+    }
+  }
+
   handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value,
+      user: {
+        ...this.state.user,
+        [e.target.name]: e.target.value,
+      },
       errors: [],
     });
   };
@@ -51,22 +71,25 @@ class SignUp extends Component {
   };
 
   isEmailValid = () => {
-    return !this.state.email.includes('@');
+    return !this.state.user.email.includes('@');
   };
 
   isPhoneValid = () => {
-    return this.state.phone.length < 4 || this.state.phone.length > 12;
+    return (
+      this.state.user.phone.length < 4 || this.state.user.phone.length > 12
+    );
   };
 
   isFiledEmpty = () => {
+    console.log(this.state);
     return (
-      !this.state.name.length ||
-      !this.state.surname.length ||
-      !this.state.email.length ||
-      !this.state.phone.length ||
-      !this.state.address.length ||
-      !this.state.dataOfBirth.length ||
-      !this.state.gender.length
+      !this.state.user.name.length ||
+      !this.state.user.surname.length ||
+      !this.state.user.email.length ||
+      !this.state.user.phone.length ||
+      !this.state.user.address.length ||
+      !this.state.user.dataOfBirth.length ||
+      !this.state.user.gender.length
     );
   };
 
@@ -77,35 +100,17 @@ class SignUp extends Component {
     if (!isValid) {
       return;
     }
-
-    const userDate = { ...this.state };
-    const { errors, ...userData } = this.state;
-    localStorage.setItem('user', JSON.stringify(userData));
-    const user = localStorage.getItem('user');
-
-    // const userDate = {
-    //   name: this.state.name,
-    //   surname: this.state.surname,
-    //   email: this.state.email,
-    //   phone: this.state.phone,
-    //   address: this.state.address,
-    //   dateOfBirth: this.state.dateOfBirth,
-    //   gender: this.state.gender,
-    // };
-    // this.setState({
-    //   data: this.state.data.concat(userDate),
-    // });
+    this.props.saveUser(this.state.user);
   };
 
   render() {
-    console.log('STATE', this.state);
     return (
       <div className="signUp main">
         <form onSubmit={this.handleSubmit} className="form">
           <div className="wrapper">
             <input
               type="text"
-              value={this.state.name}
+              value={this.state.user.name}
               onChange={this.handleChange}
               onBlur={this.handleBlure}
               name="name"
@@ -116,14 +121,11 @@ class SignUp extends Component {
             <label htmlFor="name" className="label">
               Name
             </label>
-            {/* {this.state.errors &&
-              this.state.errors.name &&
-              this.state.errors.name.map((err) => <p>{err.message}</p>)} */}
           </div>
           <div className="wrapper">
             <input
               type="text"
-              value={this.state.surname}
+              value={this.state.user.surname}
               onChange={this.handleChange}
               name="surname"
               id="surname"
@@ -138,7 +140,7 @@ class SignUp extends Component {
           <div className="wrapper">
             <input
               type="email"
-              value={this.state.email}
+              value={this.state.user.email}
               onChange={this.handleChange}
               name="email"
               id="email"
@@ -153,7 +155,7 @@ class SignUp extends Component {
           <div className="wrapper">
             <input
               type="tel"
-              value={this.state.phone}
+              value={this.state.user.phone}
               onChange={this.handleChange}
               name="phone"
               id="phone"
@@ -168,7 +170,7 @@ class SignUp extends Component {
           <div className="wrapper">
             <input
               type="text"
-              value={this.state.address}
+              value={this.state.user.address}
               onChange={this.handleChange}
               name="address"
               id="address"
@@ -183,7 +185,7 @@ class SignUp extends Component {
           <div className="wrapper">
             <input
               type="date"
-              value={this.state.dataOfBirth}
+              value={this.state.user.dataOfBirth}
               onChange={this.handleChange}
               name="dataOfBirth"
               id="dataOfBirth"
@@ -204,7 +206,7 @@ class SignUp extends Component {
                 onChange={this.handleChange}
                 name="gender"
                 id="female"
-                checked={this.state.gender === 'female'}
+                checked={this.state.user.gender === 'female'}
                 className="input-gender"
               />
             </label>
@@ -214,7 +216,7 @@ class SignUp extends Component {
                 type="radio"
                 value="male"
                 onChange={this.handleChange}
-                checked={this.state.gender === 'male'}
+                checked={this.state.user.gender === 'male'}
                 name="gender"
                 id="male"
                 className="input-gender"
@@ -248,4 +250,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default UserForm;

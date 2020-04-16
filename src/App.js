@@ -8,8 +8,8 @@ import MoviePage from './MovieViews/MoviePage';
 import TvShowsPage from './MovieViews/TvShowsPage';
 import Scroll from './Scroll/Scroll';
 import WatchlistPage from './MovieViews/WatchlistPage';
-import './main.scss';
 import SignUp from './SignUp/SignUp';
+import './main.scss';
 
 class App extends Component {
   state = {
@@ -17,6 +17,27 @@ class App extends Component {
     keyword: '',
     activeGeners: [],
     activeLanguages: [],
+    user: null,
+  };
+
+  componentDidMount() {
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if (user) {
+      this.setState({
+        user,
+      });
+    }
+  }
+
+  saveUser = (user) => {
+    localStorage.setItem('user', JSON.stringify(user));
+
+    if (user) {
+      this.setState({
+        user,
+      });
+    }
   };
 
   handelFilter = (filterId, filterType) => {
@@ -57,6 +78,7 @@ class App extends Component {
         <Router>
           <>
             <TopBar
+              user={this.state.user}
               handleChange={this.handleChange}
               keyword={this.state.keyword}
             />
@@ -113,7 +135,21 @@ class App extends Component {
               )}
             />
 
-            <Route path="/signup" render={() => <SignUp />} />
+            {this.state.user ? (
+              <Route
+                path="/settingsaccount"
+                render={() => (
+                  <SignUp user={this.state.user} saveUser={this.saveUser} />
+                )}
+              />
+            ) : (
+              <Route
+                path="/signup"
+                render={() => (
+                  <SignUp user={this.state.user} saveUser={this.saveUser} />
+                )}
+              />
+            )}
           </>
         </Router>
         <SideBarNews addMovieToWatchMovie={this.addMovieToWatchMovie} />
