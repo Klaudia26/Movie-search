@@ -76,7 +76,7 @@ class TopBar extends Component {
         </div>
 
         {this.state.isModalUserOpen && (
-          <UserModal closeModal={this.closeModal} name={this.state.user.name} />
+          <UserModal closeModal={this.closeModal} name={this.props.user.name} />
         )}
       </div>
     );
